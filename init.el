@@ -564,6 +564,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
 (defun dotspacemacs/user-config ()
   (require 'shortcuts)
+  (require 'scripts)
   "Configuration for user code: 0
 This function is called at the very end of Spacemacs startup, after layer
 configuration.
@@ -571,7 +572,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (with-eval-after-load 'ox-publish
     (setq org-publish-project-alist
-          '(("blog"
+          '(("blog-content"
              :base-directory "~/blog/Blogs/"
              :base-extension "org"
              :publishing-directory "~/blog/public/compiledOrgFiles/"
@@ -584,6 +585,12 @@ before packages are loaded."
              :html-head "<link rel=\"stylesheet\" href=\"style.css\" />"
              :html-head-include-scripts nil
              :auto-sitemap nil)
+            ("blog-images"
+             :base-directory "~/blog/Blogs/images/"
+             :base-extension "jpg\\|jpeg\\|png\\|gif\\|svg"
+             :publishing-directory "~/blog/public/compiledOrgFiles/images/"
+             :publishing-function org-publish-attachment)
+            ("blog" :components ("blog-content" "blog-images"))
             ("mypoliticaldoc"
              :base-directory "~/Freizeit/Gruene/Schreibteil/"
              :publishing-directory "~/Freizeit/Gruene/Schreibteil/"

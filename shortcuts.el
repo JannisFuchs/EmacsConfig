@@ -1,6 +1,6 @@
+;; C-S saves the current buffer
+(global-set-key (kbd "C-s") #'save-buffer)
 (with-eval-after-load 'org
-  ;; s-RET inserts bullet points or headlines
-  (define-key org-mode-map (kbd "<s-return>") #'org-meta-return)
-  ;; C-S saves the current buffer
-  (define-key org-mode-map (kbd "C-S") #'save-buffer))
+  ;;  inserts bullet points or headlines
+  (define-key org-mode-map (kbd "<s-RET>") #'org-meta-return))
 (provide 'shortcuts)
