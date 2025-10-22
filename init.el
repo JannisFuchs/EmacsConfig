@@ -54,7 +54,7 @@ This function should only modify configuration layer settings."
      ;;        shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
-     ;; version-control
+     version-control
      treemacs)
 
 
@@ -572,25 +572,34 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (with-eval-after-load 'ox-publish
     (setq org-publish-project-alist
-          '(("blog-content"
-             :base-directory "~/blog/Blogs/"
-             :base-extension "org"
-             :publishing-directory "~/blog/public/compiledOrgFiles/"
+          '(("blog-org"
+             :base-directory "~/blog/org/"              ;; Pfad zu deinen Org-Dateien
+             :publishing-directory "~/blog/html/"       ;; Ausgabe-Ordner für HTML
              :recursive t
              :publishing-function org-html-publish-to-html
-             :headline-levels 4
-             :auto-preamble nil
-             :html-postamble nil
-             :html-head-include-default-style nil
-             :html-head "<link rel=\"stylesheet\" href=\"style.css\" />"
-             :html-head-include-scripts nil
-             :auto-sitemap nil)
-            ("blog-images"
-             :base-directory "~/blog/Blogs/images/"
-             :base-extension "jpg\\|jpeg\\|png\\|gif\\|svg"
-             :publishing-directory "~/blog/public/compiledOrgFiles/images/"
-             :publishing-function org-publish-attachment)
-            ("blog" :components ("blog-content" "blog-images"))
+             :section-numbers nil
+             :with-toc nil
+
+             ;; HTML Kopfzeile mit CSS und JavaScript
+             :html-head "<base href=\"/\"/>
+             <link rel=\"stylesheet\" href=\"/style.css\" />
+             <script src=\"scripts/main.js\" defer></script>"
+
+             ;; Navbar, die auf jeder Seite angezeigt wird
+             :html-preamble "<nav>
+             <a  href=\"/\"><img class=\"navimg\" src=\"/images/Flag_of_New_Zealand.svg\" alt=\"new zealand flag\"/></a>
+             <a class=\"item\" href=\"/\">Home</a>
+             <a class=\"item\" href=\"/blog.html\">Blog</a>
+             </nav>"
+
+             :html-postamble nil)
+            ("blog-static"
+             :base-directory "~/blog/images/"
+             :publishing-directory "~/blog/html/images/"
+             :base-extension "png\\|jpg\\|gif\\|svg"
+             :publishing-function org-publish-attachment
+             :recursive t)
+            ("blog" :components ("blog-org" "blog-static"))
             ("mypoliticaldoc"
              :base-directory "~/Freizeit/Gruene/Schreibteil/"
              :publishing-directory "~/Freizeit/Gruene/Schreibteil/"
@@ -604,9 +613,9 @@ before packages are loaded."
     (add-to-list 'org-latex-classes
                  '("org-plain-latex"
                    "\\documentclass{article}
-[NO-DEFAULT-PACKAGES]
-[PACKAGES]
-[EXTRA]"
+             [NO-DEFAULT-PACKAGES]
+             [PACKAGES]
+             [EXTRA]"
                    ("\\section{%s}" . "\\section*{%s}")
                    ("\\subsection{%s}" . "\\subsection*{%s}")
                    ("\\paragraph{%s}" . "\\paragraph*{%s}"))))
@@ -614,14 +623,13 @@ before packages are loaded."
   )
 
 
-
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
+             This is an auto-generated function, do not modify its content directly, use
+             Emacs customize menu instead.
+             This function is called at the very end of Spacemacs initialization."
   (custom-set-variables
    ;; custom-set-variables was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
