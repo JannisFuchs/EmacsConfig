@@ -581,15 +581,14 @@ before packages are loaded."
              :with-toc nil
 
              ;; HTML Kopfzeile mit CSS und JavaScript
-             :html-head "<base href=\"/\"/>
-             <link rel=\"stylesheet\" href=\"/style.css\" />
-             <script src=\"scripts/main.js\" defer></script>"
+             :html-head "<base href=\"/blog/html/\"/>
+             <link rel=\"stylesheet\" href=\"style.css\" />"
 
              ;; Navbar, die auf jeder Seite angezeigt wird
              :html-preamble "<nav>
-             <a  href=\"/\"><img class=\"navimg\" src=\"/images/Flag_of_New_Zealand.svg\" alt=\"new zealand flag\"/></a>
-             <a class=\"item\" href=\"/\">Home</a>
-             <a class=\"item\" href=\"/blog.html\">Blog</a>
+             <a  href=\"index.html\"><img class=\"navimg\" src=\"images/Flag_of_New_Zealand.svg\" alt=\"new zealand flag\"/></a>
+             <a class=\"item\" href=\"index.html\">Home</a>
+             <a class=\"item\" href=\"blog.html\">Blog</a>
              </nav>"
 
              :html-postamble nil)
@@ -627,16 +626,16 @@ before packages are loaded."
 ;; auto-generate custom variable definitions.
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
-             This is an auto-generated function, do not modify its content directly, use
-             Emacs customize menu instead.
-             This function is called at the very end of Spacemacs initialization."
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
   (custom-set-variables
    ;; custom-set-variables was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
    '(package-selected-packages
-     '(evil-org gnuplot helm-org-rifle org-cliplink org-contrib org-download org-mime org-pomodoro alert log4e gntp org-present org-projectile org-project-capture org-category-capture org-rich-yank orgit-forge orgit org dap-mode lsp-docker lsp-treemacs bui lsp-mode ggtags import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode tern add-node-modules-path company ivy emmet-mode flycheck helm-css-scss simple-httpd prettier-js pug-mode haml-mode scss-mode slim-mode tagedit web-beautify web-mode yasnippet code-review emojify deferred a forge yaml markdown-mode ghub closql emacsql treepy git-link git-messenger git-modes git-timemachine gitignore-templates helm-ls-git smeargle treemacs-magit magit with-editor transient magit-section llama cond-let ws-butler writeroom-mode winum which-key wgrep vundo volatile-highlights vi-tilde-fringe uuidgen undo-fu-session undo-fu treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org term-cursor symon symbol-overlay string-inflection string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc restart-emacs rainbow-delimiters quickrun popwin pcre2el password-generator paradox page-break-lines overseer org-superstar open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-descbinds helm-comint helm-ag google-translate golden-ratio fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-demos elisp-def editorconfig dumb-jump drag-stuff dotenv-mode disable-mouse dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode avy-jump-helm-line auto-highlight-symbol auto-compile all-the-icons aggressive-indent ace-link)))
+     '(browse-at-remote diff-hl evil-org gnuplot helm-org-rifle org-cliplink org-contrib org-download org-mime org-pomodoro alert log4e gntp org-present org-projectile org-project-capture org-category-capture org-rich-yank orgit-forge orgit org dap-mode lsp-docker lsp-treemacs bui lsp-mode ggtags import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode tern add-node-modules-path company ivy emmet-mode flycheck helm-css-scss simple-httpd prettier-js pug-mode haml-mode scss-mode slim-mode tagedit web-beautify web-mode yasnippet code-review emojify deferred a forge yaml markdown-mode ghub closql emacsql treepy git-link git-messenger git-modes git-timemachine gitignore-templates helm-ls-git smeargle treemacs-magit magit with-editor transient magit-section llama cond-let ws-butler writeroom-mode winum which-key wgrep vundo volatile-highlights vi-tilde-fringe uuidgen undo-fu-session undo-fu treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org term-cursor symon symbol-overlay string-inflection string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc restart-emacs rainbow-delimiters quickrun popwin pcre2el password-generator paradox page-break-lines overseer org-superstar open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-descbinds helm-comint helm-ag google-translate golden-ratio fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-demos elisp-def editorconfig dumb-jump drag-stuff dotenv-mode disable-mouse dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode avy-jump-helm-line auto-highlight-symbol auto-compile all-the-icons aggressive-indent ace-link)))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
