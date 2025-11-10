@@ -574,14 +574,14 @@ before packages are loaded."
     (setq org-publish-project-alist
           '(("blog-org"
              :base-directory "~/blog/org/"              ;; Pfad zu deinen Org-Dateien
-             :publishing-directory "~/blog/html/"       ;; Ausgabe-Ordner für HTML
+             :publishing-directory "~/blog"       ;; Ausgabe-Ordner für HTML
              :recursive t
              :publishing-function org-html-publish-to-html
              :section-numbers nil
              :with-toc nil
 
              ;; HTML Kopfzeile mit CSS und JavaScript
-             :html-head "<base href=\"/blog/html/\"/>
+             :html-head "<base href=\"/blog/\"/>
              <link rel=\"stylesheet\" href=\"style.css\" />"
 
              ;; Navbar, die auf jeder Seite angezeigt wird
