@@ -593,8 +593,8 @@ before packages are loaded."
 
              :html-postamble nil)
             ("blog-static"
-             :base-directory "~/blog/images/"
-             :publishing-directory "~/blog/html/images/"
+             :base-directory "~/blog/org/images/"
+             :publishing-directory "~/blog/images/"
              :base-extension "png\\|jpg\\|gif\\|svg"
              :publishing-function org-publish-attachment
              :recursive t)
