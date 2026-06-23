@@ -33,7 +33,9 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(javascript
+   '(yaml
+     php
+     javascript
      html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -45,7 +47,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      helm
-     ;; lsp
+     latex
      ;; markdown
      multiple-cursors
      (org :variables org-enable-bootstrap-support t)
@@ -419,7 +421,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
 
    ;; Code folding method. Possible values are `evil', `origami' and `vimish'.
    ;; (default 'evil)
@@ -595,7 +597,7 @@ before packages are loaded."
             ("blog-static"
              :base-directory "~/blog/org/images/"
              :publishing-directory "~/blog/images/"
-             :base-extension "png\\|jpg\\|gif\\|svg"
+             :base-extension "png\\|jpg\\|jpeg\\|gif\\|svg"
              :publishing-function org-publish-attachment
              :recursive t)
             ("blog" :components ("blog-org" "blog-static"))
@@ -620,6 +622,10 @@ before packages are loaded."
                    ("\\paragraph{%s}" . "\\paragraph*{%s}"))))
   (setq org-latex-default-class "org-plain-latex")
   )
+(with-eval-after-load 'tex
+  (setq TeX-parse-self t
+        TeX-auto-save t)
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -634,8 +640,49 @@ This function is called at the very end of Spacemacs initialization."
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
+   '(org-export-backends '(ascii html icalendar latex md odt))
    '(package-selected-packages
-     '(browse-at-remote diff-hl evil-org gnuplot helm-org-rifle org-cliplink org-contrib org-download org-mime org-pomodoro alert log4e gntp org-present org-projectile org-project-capture org-category-capture org-rich-yank orgit-forge orgit org dap-mode lsp-docker lsp-treemacs bui lsp-mode ggtags import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode tern add-node-modules-path company ivy emmet-mode flycheck helm-css-scss simple-httpd prettier-js pug-mode haml-mode scss-mode slim-mode tagedit web-beautify web-mode yasnippet code-review emojify deferred a forge yaml markdown-mode ghub closql emacsql treepy git-link git-messenger git-modes git-timemachine gitignore-templates helm-ls-git smeargle treemacs-magit magit with-editor transient magit-section llama cond-let ws-butler writeroom-mode winum which-key wgrep vundo volatile-highlights vi-tilde-fringe uuidgen undo-fu-session undo-fu treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org term-cursor symon symbol-overlay string-inflection string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc restart-emacs rainbow-delimiters quickrun popwin pcre2el password-generator paradox page-break-lines overseer org-superstar open-junk-file nameless multi-line macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-descbinds helm-comint helm-ag google-translate golden-ratio fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-demos elisp-def editorconfig dumb-jump drag-stuff dotenv-mode disable-mouse dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode avy-jump-helm-line auto-highlight-symbol auto-compile all-the-icons aggressive-indent ace-link)))
+     '(a ac-php-core ace-link add-node-modules-path aggressive-indent alert
+         all-the-icons auctex auctex-latexmk auto-compile auto-highlight-symbol
+         avy-jump-helm-line browse-at-remote bui centered-cursor-mode
+         clean-aindent-mode closql code-review column-enforce-mode company
+         company-auctex company-math company-php company-phpactor company-reftex
+         compat composer cond-let consult dap-mode deferred define-word devdocs
+         diff-hl diminish dired-quick-sort disable-mouse dotenv-mode drag-stuff
+         drupal-mode dumb-jump editorconfig elisp-def elisp-demos elisp-slime-nav
+         emacsql emmet-mode emojify emr eval-sexp-fu evil-anzu evil-args
+         evil-cleverparens evil-collection evil-easymotion evil-escape
+         evil-evilified-state evil-exchange evil-goggles evil-iedit-state
+         evil-indent-plus evil-lion evil-lisp-state evil-matchit evil-mc
+         evil-nerd-commenter evil-numbers evil-org evil-surround evil-tex
+         evil-textobj-line evil-tutor evil-unimpaired evil-visual-mark-mode
+         evil-visualstar expand-region eyebrowse fancy-battery flycheck
+         flycheck-elsa flycheck-package flycheck-pos-tip forge geben ggtags ghub
+         git-link git-messenger git-modes git-timemachine gitignore-templates gntp
+         gnuplot golden-ratio google-translate grizzl haml-mode helm-ag
+         helm-comint helm-css-scss helm-descbinds helm-ls-git helm-lsp helm-make
+         helm-mode-manager helm-org helm-org-rifle helm-projectile helm-purpose
+         helm-swoop helm-xref hide-comnt highlight-indentation highlight-numbers
+         highlight-parentheses hl-todo holy-mode hungry-delete hybrid-mode
+         import-js indent-guide info+ inspector ivy js-doc js2-mode js2-refactor
+         link-hint livid-mode llama log4e lorem-ipsum lsp-docker lsp-latex
+         lsp-mode lsp-origami lsp-treemacs lsp-ui macrostep magit magit-section
+         markdown-mode math-symbol-lists multi-line multiple-cursors nameless
+         nodejs-repl npm-mode open-junk-file org org-category-capture org-cliplink
+         org-contrib org-download org-mime org-pomodoro org-present
+         org-project-capture org-projectile org-rich-yank org-superstar orgit
+         orgit-forge origami overseer package-lint page-break-lines paradox
+         password-generator pcre2el php-auto-yasnippets php-extras php-mode
+         php-runtime phpactor phpunit popwin pos-tip prettier-js pug-mode quickrun
+         rainbow-delimiters restart-emacs scss-mode simple-httpd skewer-mode
+         slim-mode smeargle space-doc spaceline spacemacs-purpose-popwin
+         spacemacs-whitespace-cleanup string-edit-at-point string-inflection
+         symbol-overlay symon tagedit term-cursor tern toc-org transient
+         treemacs-evil treemacs-icons-dired treemacs-magit treemacs-persp
+         treemacs-projectile treepy undo-fu undo-fu-session uuidgen
+         vi-tilde-fringe volatile-highlights vundo web-beautify web-mode wgrep
+         which-key winum with-editor writeroom-mode ws-butler xcscope yaml
+         yaml-mode yasnippet)))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
